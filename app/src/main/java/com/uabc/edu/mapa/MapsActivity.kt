@@ -17,6 +17,9 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import database
+import org.jetbrains.anko.db.insert
+import org.jetbrains.anko.db.select
 
 class MapsActivity : AppCompatActivity(),
         OnMapReadyCallback, LocationListener {
@@ -59,6 +62,21 @@ class MapsActivity : AppCompatActivity(),
                 }
 
 
+            }
+            database.use {
+                insert("Person",
+                        "_id" to 5,
+                        "name" to "John",
+                        "surname" to "Smith",
+                        "age" to 20)
+            }
+
+           val coco= database.use {
+
+
+                select("Person")
+                        .whereSimple("(_id = ?) and (name = ?)",
+                                1.toString(), "John")
             }
 
 
