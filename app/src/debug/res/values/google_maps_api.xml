@@ -4,15 +4,13 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=02:00:6A:77:18:DD:2B:CD:6E:EF:32:82:DB:9C:F6:F3:AF:09:62:0C%3Bcom.uabc.edu.mapa
+    https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=%3Bcom.uabc.edu.mapa
 
     You can also add your credentials to an existing key, using these values:
 
     Package name:
-    02:00:6A:77:18:DD:2B:CD:6E:EF:32:82:DB:9C:F6:F3:AF:09:62:0C
 
     SHA-1 certificate fingerprint:
-    02:00:6A:77:18:DD:2B:CD:6E:EF:32:82:DB:9C:F6:F3:AF:09:62:0C
 
     Alternatively, follow the directions here:
     https://developers.google.com/maps/documentation/android/start#get-key
@@ -21,5 +19,5 @@
     string in this file.
     -->
   <string name="google_maps_key" templateMergeStrategy="preserve"
-    translatable="false">AIzaSyBKSnpbhyVjZ25PAOvE-Qwefa2Pzdu3ri4</string>
+    translatable="false"></string>
 </resources>
