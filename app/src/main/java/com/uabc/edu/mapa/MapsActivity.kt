@@ -21,6 +21,7 @@ import database
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 
+
 class MapsActivity : AppCompatActivity(),
         OnMapReadyCallback, LocationListener {
 
@@ -65,18 +66,25 @@ class MapsActivity : AppCompatActivity(),
             }
             database.use {
                 insert("Person",
-                        "_id" to 5,
+                        "_id" to 90,
                         "name" to "John",
                         "surname" to "Smith",
                         "age" to 20)
             }
 
-           val coco= database.use {
 
-
+            database.use {
                 select("Person")
                         .whereSimple("(_id = ?) and (name = ?)",
-                                1.toString(), "John")
+                            1.toString(), "John").exec {
+                            moveToNext()
+
+                            var nombre=  getString(1)
+                            var surname=getString(2)
+
+                            print(nombre)
+                        }
+
             }
 
 
