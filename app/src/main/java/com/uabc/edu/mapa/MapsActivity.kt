@@ -6,7 +6,9 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -17,9 +19,11 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import database
 import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.util.*
 
 
 class MapsActivity : AppCompatActivity(),
@@ -64,25 +68,24 @@ class MapsActivity : AppCompatActivity(),
 
 
             }
-            database.use {
-                insert("Person",
-                        "_id" to 90,
-                        "name" to "John",
-                        "surname" to "Smith",
-                        "age" to 20)
-            }
 
 
             database.use {
-                select("Person")
-                        .whereSimple("(_id = ?) and (name = ?)",
-                            1.toString(), "John").exec {
-                            moveToNext()
+                select("Puntos")
+                        .exec {
 
-                            var nombre=  getString(1)
-                            var surname=getString(2)
+                           while( moveToNext()){
 
-                            print(nombre)
+                            var latitude =  getDouble(1)
+                            var longitud=getDouble(2)
+                            var fecha=getString(3)
+
+                            println("Latitud"+latitude.toString())
+                               println("Longitud"+longitud.toString())
+                               println("Fecha"+fecha)
+
+
+                           }
                         }
 
             }
@@ -96,7 +99,6 @@ class MapsActivity : AppCompatActivity(),
 
     }
 
-
     override fun onStart() {
         super.onStart()
 
@@ -108,7 +110,7 @@ class MapsActivity : AppCompatActivity(),
                     getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
             locationManager?.requestLocationUpdates(
-                    LocationManager.GPS_PROVIDER, 0L, 1f, this);
+                    LocationManager.GPS_PROVIDER, 0L, 5f, this);
             locationManager?.requestLocationUpdates(
                     LocationManager.NETWORK_PROVIDER, 0L, 1f, this);
         }
@@ -160,6 +162,16 @@ class MapsActivity : AppCompatActivity(),
         var soyYo = LatLng(location!!.latitude, location.longitude)
         mMap.addMarker(MarkerOptions().position(soyYo).title("Soy yo").snippet("Aqui toy"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(soyYo))
+        val current = LocalDateTime.now()
+
+        database.use {
+            insert("Puntos",
+
+                    "latitud" to location!!.latitude,
+                    "longitud" to location!!.longitude,
+                    "fecha" to  current.toString())
+        }
+
 
     }
 
