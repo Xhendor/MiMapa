@@ -10,7 +10,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.uabc.edu.mapa"
-        minSdkVersion 26
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -45,4 +45,13 @@ dependencies {
     implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
     // Anko SQLite
     implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
+    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-auth:16.0.1'
+    implementation 'com.firebaseui:firebase-ui-auth:3.3.1'
+    implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.0.0'
+
 }
+
+apply plugin: 'com.google.gms.google-services'
+

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "885697979274",
+    "firebase_url": "https://clase-295b3.firebaseio.com",
+    "project_id": "clase-295b3",
+    "storage_bucket": "clase-295b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885697979274:android:38808441303da740",
+        "android_client_info": {
+          "package_name": "com.uabc.edu.mapa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885697979274-5f86m5kmtlfkfs3238o57p4hplqb28d5.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "885697979274-5f86m5kmtlfkfs3238o57p4hplqb28d5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOxdJR9Vlx2LiIM8fi-H7wwc_wk_PxuXw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
